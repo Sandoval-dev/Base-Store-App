@@ -21,6 +21,21 @@ namespace WebApi.Migrations
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "Price", "Title" },
+                values: new object[] { 1, 75m, "Bursa'dan Anılar" });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "Price", "Title" },
+                values: new object[] { 2, 750m, "Para Nasıl Kazanılır?" });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "Price", "Title" },
+                values: new object[] { 3, 142m, "Oyun Oynamayı Öğren" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
