@@ -9,8 +9,8 @@ namespace Repositories.Contracts
 {
     public interface IBookRepository : IRepositoryBase<Book>
     {
-        IQueryable<Book> GetAllBooks(bool truckChanges);
-        Book GetOneBookById(int id, bool truckChanges);
+        Task<IEnumerable<Book>> GetAllBooksAsync(bool truckChanges);
+        Task<Book> GetOneBookByIdAsync(int id, bool truckChanges);
         void CreateOneBook(Book book);
         void UpdateOneBook(Book book);
         void DeleteOneBook(Book book);
