@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Repositories.Contracts
 {
     public interface IBookRepository : IRepositoryBase<Book>
     {
-        Task<IEnumerable<Book>> GetAllBooksAsync(bool truckChanges);
+        Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters,bool truckChanges);
         Task<Book> GetOneBookByIdAsync(int id, bool truckChanges);
         void CreateOneBook(Book book);
         void UpdateOneBook(Book book);
