@@ -29,7 +29,7 @@ namespace Repositories.EfCore
             var books = await FindAll(truckChanges)
                .FilterBooks(bookParameters.MinPrice, bookParameters.MaxPrice)
                .Search(bookParameters.SearchTerm)
-           .OrderBy(b => b.Id)
+           .Sort(bookParameters.OrderBy)
            .ToListAsync();
 
             return PagedList<Book>.ToPagedList(books, bookParameters.PageNumber, bookParameters.PageSize);
