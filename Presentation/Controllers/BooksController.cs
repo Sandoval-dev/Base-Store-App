@@ -28,6 +28,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetAllBoksAsync([FromQuery]BookParameters bookParameters)
         {
 

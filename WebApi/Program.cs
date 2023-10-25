@@ -38,6 +38,7 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureDataShaper();
+builder.Services.AddCustomMediaTypes();
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
