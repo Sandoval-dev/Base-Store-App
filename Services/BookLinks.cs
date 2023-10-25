@@ -17,45 +17,80 @@ namespace Services
     {
         private readonly LinkGenerator _linkGenerator;
         private readonly IDataShaper<BookDto> _dataShaper;
-        public LinkResponse TryGenerateLinks(IEnumerable<BookDto> booksDto, string fields, HttpContext httpContext)
+
+        public BookLinks(LinkGenerator linkGenerator,
+            IDataShaper<BookDto> dataShaper)
         {
-            var shapedBooks=ShapeData(booksDto, fields);
+            _linkGenerator = linkGenerator;
+            _dataShaper = dataShaper;
+        }
+
+        public LinkResponse TryGenerateLinks(IEnumerable<BookDto> booksDto,
+            string fields,
+            HttpContext httpContext)
+        {
+            var shapedBooks = ShapeData(booksDto, fields);
             if (ShouldGenerateLinks(httpContext))
                 return ReturnLinkedBooks(booksDto, fields, httpContext, shapedBooks);
             return ReturnShapedBooks(shapedBooks);
-
         }
 
-        private LinkResponse ReturnLinkedBooks(IEnumerable<BookDto> booksDto, string fields, HttpContext httpContext, List<Entity> shapedBooks)
+        private LinkResponse ReturnLinkedBooks(IEnumerable<BookDto> booksDto,
+            string fields,
+            HttpContext httpContext,
+            List<Entity> shapedBooks)
         {
-            var bookDtoList=booksDto.ToList();
+            var bookDtoList = booksDto.ToList();
 
-            for (int index = 0;  index < bookDtoList.Count(); index++)
+            for (int index = 0; index < bookDtoList.Count(); index++)
             {
-                var bookLinks=CreateForBook(httpContext, bookDtoList[index], fields);
+                var bookLinks = CreateForBook(httpContext, bookDtoList[index], fields);
                 shapedBooks[index].Add("Links", bookLinks);
             }
 
             var bookCollection = new LinkCollectionWrapper<Entity>(shapedBooks);
+            CreateForBooks(httpContext, bookCollection);
             return new LinkResponse { HasLinks = true, LinkedEntities = bookCollection };
         }
 
-        private List<Link> CreateForBook(HttpContext httpContext, BookDto bookDto, string fields)
+        private LinkCollectionWrapper<Entity> CreateForBooks(HttpContext httpContext,
+            LinkCollectionWrapper<Entity> bookCollectionWrapper)
+        {
+            bookCollectionWrapper.Links.Add(new Link()
+            {
+                HRef = $"/api/{httpContext.GetRouteData().Values["controller"].ToString().ToLower()}",
+                Rel = "self",
+                Method = "GET"
+            });
+            return bookCollectionWrapper;
+        }
+
+        private List<Link> CreateForBook(HttpContext httpContext,
+            BookDto bookDto,
+            string fields)
         {
             var links = new List<Link>()
             {
-                new Link("a1","b1","c1"),
-                new Link("a2","b2","c2")
+               new Link()
+               {
+                   HRef = $"/api/{httpContext.GetRouteData().Values["controller"].ToString().ToLower()}" +
+                   $"/{bookDto.Id}",
+                   Rel = "self",
+                   Method = "GET"
+               },
+               new Link()
+               {
+                   HRef = $"/api/{httpContext.GetRouteData().Values["controller"].ToString().ToLower()}",
+                   Rel="create",
+                   Method = "POST"
+               },
             };
             return links;
         }
 
         private LinkResponse ReturnShapedBooks(List<Entity> shapedBooks)
         {
-            return new LinkResponse()
-            {
-                ShapedEntities = shapedBooks
-            };
+            return new LinkResponse() { ShapedEntities = shapedBooks };
         }
 
         private bool ShouldGenerateLinks(HttpContext httpContext)
@@ -68,15 +103,11 @@ namespace Services
 
         private List<Entity> ShapeData(IEnumerable<BookDto> booksDto, string fields)
         {
-           return _dataShaper.ShapeData(booksDto, fields)
-                .Select(b=>b.Entity)
+            return _dataShaper
+                .ShapeData(booksDto, fields)
+                .Select(b => b.Entity)
                 .ToList();
         }
 
-        public BookLinks(LinkGenerator linkGenerator, IDataShaper<BookDto> dataShaper)
-        {
-            _linkGenerator = linkGenerator;
-            _dataShaper = dataShaper;
-        }
     }
 }

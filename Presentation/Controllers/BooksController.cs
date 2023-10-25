@@ -31,13 +31,21 @@ namespace Presentation.Controllers
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetAllBoksAsync([FromQuery]BookParameters bookParameters)
         {
+            var linkParameters = new LinkParameters()
+            {
+                BookParameters = bookParameters,
+                HttpContext = HttpContext
+            };
 
-            var pagedResult = await _manager
+            var result = await _manager
                 .BookService
-                .GetAllBooksAsync(bookParameters,false);
+                .GetAllBooksAsync(linkParameters,false);
 
-            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagedResult.metaData));
-            return Ok(pagedResult.books);
+            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(result.metaData));
+
+            return result.linkResponse.HasLinks ?
+                Ok(result.linkResponse.LinkedEntities) :
+                Ok(result.linkResponse.ShapedEntities);
 
 
 
