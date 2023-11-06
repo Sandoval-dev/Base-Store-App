@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entities.LinkModels;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api")]
-    public class RootController:ControllerBase
+    public class RootController : ControllerBase
     {
         private readonly LinkGenerator _linkGenerator;
 
@@ -19,12 +20,36 @@ namespace Presentation.Controllers
             _linkGenerator = linkGenerator;
         }
 
-        [HttpGet(Name ="GetRoot")]
-        public async Task<IActionResult> GetRoot([FromHeader(Name ="Accept")]string mediaType)
+        [HttpGet(Name = "GetRoot")]
+        public async Task<IActionResult> GetRoot([FromHeader(Name = "Accept")] string mediaType)
         {
             if (mediaType.Contains("application/vnd.btkakademi.apiroot"))
             {
+                var list = new List<Link>()
+                {
+                    new Link()
+                    {
+                        HRef=_linkGenerator.GetUriByName(HttpContext, nameof(GetRoot), new{}),
+                        Rel="_self",
+                        Method="GET"
+                    },
 
+                       new Link()
+                    {
+                        HRef=_linkGenerator.GetUriByName(HttpContext, nameof(BooksController.GetAllBoksAsync), new{}),
+                        Rel="books",
+                        Method="GET"
+                    },
+
+                         new Link()
+                    {
+                        HRef=_linkGenerator.GetUriByName(HttpContext, nameof(BooksController.CreateOneBookAsync), new{}),
+                        Rel="books",
+                        Method="POST"
+                    }
+                };
+
+                return Ok(list);
             }
             return NoContent();
         }
