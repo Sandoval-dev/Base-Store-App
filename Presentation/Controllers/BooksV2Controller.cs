@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace Presentation.Controllers
 {
-    [ApiVersion("2.0")]
+    
+    //[ApiVersion("2.0", Deprecated =true)]
     [ApiController]
     [Route("api/books")]
     public class BooksV2Controller:ControllerBase
@@ -27,6 +28,11 @@ namespace Presentation.Controllers
         public async Task<IActionResult> GetAllBoksAsync()
         {
             var books = await _manager.BookService.GetAllBooksAsync(false);
+            var booksV2 = books.Select(b => new
+            {
+                Title = b.Title,
+                Id = b.Id
+            });
             return Ok(books);
 
 
