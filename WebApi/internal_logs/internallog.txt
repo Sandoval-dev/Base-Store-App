@@ -598,3 +598,49 @@
 2023-11-09 11:42:09.4512 Info Message Template Auto Format enabled
 2023-11-09 11:42:09.5403 Info Adding target FileTarget(Name=logfile)
 2023-11-09 11:42:09.5680 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 11:55:31.9758 Info Message Template Auto Format enabled
+2023-11-09 11:55:32.0202 Info Adding target FileTarget(Name=logfile)
+2023-11-09 11:55:32.0384 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 11:55:33.2174 Info AppDomain Shutting down. LogFactory closing...
+2023-11-09 11:55:33.2273 Info LogFactory has been closed.
+2023-11-09 11:56:11.3687 Info Message Template Auto Format enabled
+2023-11-09 11:56:11.4145 Info Adding target FileTarget(Name=logfile)
+2023-11-09 11:56:11.4336 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 11:56:12.9546 Info AppDomain Shutting down. LogFactory closing...
+2023-11-09 11:56:12.9739 Info LogFactory has been closed.
+2023-11-09 11:56:32.1555 Info Message Template Auto Format enabled
+2023-11-09 11:56:32.2006 Info Adding target FileTarget(Name=logfile)
+2023-11-09 11:56:32.2187 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 11:56:32.9567 Info AppDomain Shutting down. LogFactory closing...
+2023-11-09 11:56:32.9567 Info LogFactory has been closed.
+2023-11-09 11:56:35.4462 Info Message Template Auto Format enabled
+2023-11-09 11:56:35.4890 Info Adding target FileTarget(Name=logfile)
+2023-11-09 11:56:35.5068 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 11:56:36.7431 Info AppDomain Shutting down. LogFactory closing...
+2023-11-09 11:56:36.7516 Info LogFactory has been closed.
+2023-11-09 11:56:51.8825 Info Message Template Auto Format enabled
+2023-11-09 11:56:51.9298 Info Adding target FileTarget(Name=logfile)
+2023-11-09 11:56:51.9487 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 11:56:52.9753 Info AppDomain Shutting down. LogFactory closing...
+2023-11-09 11:56:52.9845 Info LogFactory has been closed.
+2023-11-09 11:57:14.3508 Info Message Template Auto Format enabled
+2023-11-09 11:57:14.3974 Info Adding target FileTarget(Name=logfile)
+2023-11-09 11:57:14.4175 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 11:57:17.1413 Info AppDomain Shutting down. LogFactory closing...
+2023-11-09 11:57:17.1413 Info LogFactory has been closed.
+2023-11-09 12:15:43.8416 Info Message Template Auto Format enabled
+2023-11-09 12:15:43.8890 Info Adding target FileTarget(Name=logfile)
+2023-11-09 12:15:43.9073 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 12:15:44.9621 Info AppDomain Shutting down. LogFactory closing...
+2023-11-09 12:15:44.9727 Info LogFactory has been closed.
+2023-11-09 12:16:03.3163 Info Message Template Auto Format enabled
+2023-11-09 12:16:03.3627 Info Adding target FileTarget(Name=logfile)
+2023-11-09 12:16:03.3839 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 12:16:04.6916 Info AppDomain Shutting down. LogFactory closing...
+2023-11-09 12:16:04.7031 Info LogFactory has been closed.
+2023-11-09 12:36:52.5652 Info Message Template Auto Format enabled
+2023-11-09 12:36:52.7767 Info Adding target FileTarget(Name=logfile)
+2023-11-09 12:36:52.8549 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
+2023-11-09 12:41:20.7985 Info Message Template Auto Format enabled
+2023-11-09 12:41:20.9102 Info Adding target FileTarget(Name=logfile)
+2023-11-09 12:41:20.9647 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\OsMaN\source\repos\Base Store App\WebApi\nlog.config
