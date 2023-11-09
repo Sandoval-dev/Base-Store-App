@@ -1,18 +1,18 @@
 ﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using Repositories.EfCore.Config;
+using Repositories.EFCore.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repositories.EfCore
+namespace Repositories.EFCore
 {
-    public class RepositoryContext:DbContext
+    public class RepositoryContext : DbContext
     {
-        public RepositoryContext(DbContextOptions options) : base(options)
+        public RepositoryContext(DbContextOptions options) :
+            base(options)
         {
 
         }
@@ -20,7 +20,7 @@ namespace Repositories.EfCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new BookConfig()); //modelBuilder üzerinden bir config uygula dedik.
+            modelBuilder.ApplyConfiguration(new BookConfig());
         }
     }
 }
